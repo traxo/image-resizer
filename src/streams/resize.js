@@ -43,9 +43,6 @@ module.exports = function () {
 
     var r = sharp(image.contents);
 
-    // never enlarge an image beyond its original size
-    r.withoutEnlargement();
-
     // if allowed auto rotate images, very helpful for photos off of an iphone
     // which are landscape by default and the metadata tells them what to show.
     if (env.AUTO_ORIENT) {
@@ -67,7 +64,6 @@ module.exports = function () {
 
     case 'resize':
       r.resize(image.modifiers.width, image.modifiers.height);
-      r.max();
       r.toBuffer(resizeResponse);
       break;
 
@@ -108,7 +104,6 @@ module.exports = function () {
         switch(image.modifiers.crop){
         case 'fit':
           r.resize(image.modifiers.width, image.modifiers.height);
-          r.max();
           break;
         case 'fill':
           d = dims.cropFill(image.modifiers, size);
@@ -143,13 +138,14 @@ module.exports = function () {
           break;
         case 'scale':
           r.resize(image.modifiers.width, image.modifiers.height);
-          r.ignoreAspectRatio();
           break;
         case 'pad':
-          r.resize(
-            image.modifiers.width,
-            image.modifiers.height
-          ).background(env.IMAGE_PADDING_COLOR || 'white').embed();
+          r.resize({
+            width: image.modifiers.width,
+            height: image.modifiers.height,
+            fit: 'contain',
+            background: env.IMAGE_PADDING_COLOR || 'white'
+          });
         }
 
         r.toBuffer(resizeResponse);
