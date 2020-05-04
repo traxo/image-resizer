@@ -1,6 +1,6 @@
 {
   "name": "image-resizer",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "description": "On-the-fly image resizing and optimization using node and sharp (libvips). Heroku ready!",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   ],
   "author": "James Nicol <james.andrew.nicol@gmail.com> (https://github.com/jimmynicol)",
   "license": "MIT",
-  "repository": "git://github.com/jimmynicol/image-resizer",
+  "repository": "git://github.com/traxo/image-resizer",
   "bin": {
     "image-resizer": "./bin/image_resizer.js"
   },
@@ -38,7 +38,7 @@
     "mkdirp": "^0.5.0",
     "morgan": "^1.7.0",
     "request": "^2.81.0",
-    "sharp": "^0.25.2",
+    "sharp": "^0.21.3",
     "twit": "~1.1.15"
   },
   "devDependencies": {

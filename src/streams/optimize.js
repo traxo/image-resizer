@@ -24,18 +24,34 @@ module.exports = function () {
 
     var r = sharp(image.contents);
 
+    var options = {};
+
     if (env.IMAGE_PROGRESSIVE) {
-      r.progressive();
+      switch (image.format) {
+        case 'jpeg':
+        case 'jpg':
+        case 'png':
+          options.progressive = true;
+          break;
+      }
     }
 
     // set the output quality
     if (image.modifiers.quality < 100) {
-      r.quality(image.modifiers.quality);
+      switch (image.format) {
+        case 'jpeg':
+        case 'jpg':
+        case 'webp':
+        case 'tiff':
+        case 'heif':
+          options.quality = image.modifiers.quality;
+          break;
+      }
     }
 
     // if a specific output format is specified, set it
     if (image.outputFormat) {
-      r.toFormat(image.outputFormat);
+      r.toFormat(image.outputFormat, options);
     }
 
     // write out the optimised image to buffer and pass it on

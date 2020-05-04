@@ -18,7 +18,7 @@ When a new image size is requested of `image-resizer` via the CDN, it will pull 
 
 ## Getting Started
 
-    $ npm install -g tripviss/image-resizer gulp
+    $ npm install -g traxo/image-resizer gulp
     $ mkdir my_fancy_image_server
     $ cd my_fancy_image_server
     $ image-resizer new
@@ -105,7 +105,7 @@ The available variables are as follows:
   IMAGE_PADDING_COLOR: 'white',
 
   // Optimization options
-  IMAGE_QUALITY: 80,
+  IMAGE_QUALITY: 100,
   IMAGE_PROGRESSIVE: true,
 
   // Cache expiries

@@ -34,7 +34,7 @@ vars = {
 
   // Optimization options
   IMAGE_PROGRESSIVE: true,
-  IMAGE_QUALITY: 80,
+  IMAGE_QUALITY: 100,
 
   // Cache expiries
   IMAGE_EXPIRY: 60 * 60 * 24 * 90,
